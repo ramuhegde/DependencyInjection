@@ -1,15 +1,10 @@
 package com.app.basics.daggerhilt.di.activity
 
-import com.app.basics.daggerhilt.di.app.CoreComponent
-import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.di.scope.ActivityScope
 import com.app.basics.daggerhilt.di.viewmodel.ViewModelModule
-import com.app.basics.daggerhilt.network.QuestionsApi
 import com.app.basics.daggerhilt.repo.QuestionsRepo
 import com.app.basics.daggerhilt.ui.main.MainActivity
-import dagger.Component
 import dagger.Subcomponent
-import retrofit2.Retrofit
 
 @Subcomponent(modules = [ActivityModule::class, ViewModelModule::class])
 @ActivityScope
@@ -42,7 +37,7 @@ interface ActivityComponent {
 //    fun provideRetrofit(): Retrofit
 //    fun provideQuestionsApi(): QuestionsApi
 
-      // ActivityComponent's own provider function (not from CoreComponent)
+// ActivityComponent's own provider function (not from CoreComponent)
 //    fun provideQuestionsRepo(): QuestionsRepo
 //
 //    // Injector

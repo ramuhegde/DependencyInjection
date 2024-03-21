@@ -6,6 +6,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 class ViewModelFactory @Inject constructor(
+    // This map is provided by Dagger
     private val viewModelMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 

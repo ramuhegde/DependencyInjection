@@ -3,8 +3,6 @@ package com.app.basics.daggerhilt.di.app
 import com.app.basics.daggerhilt.di.activity.ActivityComponent
 import com.app.basics.daggerhilt.di.activity.ActivityModule
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
-import com.app.basics.daggerhilt.di.viewmodel.ViewModelComponent
-import com.app.basics.daggerhilt.di.viewmodel.ViewModelModule
 import com.app.basics.daggerhilt.network.QuestionsApi
 import dagger.Component
 import retrofit2.Retrofit
