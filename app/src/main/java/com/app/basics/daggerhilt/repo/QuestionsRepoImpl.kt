@@ -4,8 +4,9 @@ import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.network.QuestionsApi
 import com.app.basics.daggerhilt.network.model.Question
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class QuestionsRepoImpl(
+class QuestionsRepoImpl @Inject constructor(
     private val questionsApi: QuestionsApi,
     private val dispatcher: CoroutineDispatcherProvider
 ) : QuestionsRepo {
