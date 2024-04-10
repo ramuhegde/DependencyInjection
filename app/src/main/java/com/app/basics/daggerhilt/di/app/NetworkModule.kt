@@ -13,11 +13,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    private const val STACK_OVER_FLOW_BASE_URL = "https://api.stackexchange.com"
+
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.stackexchange.com")
+            .baseUrl(STACK_OVER_FLOW_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

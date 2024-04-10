@@ -5,8 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Question(
-    @PrimaryKey(autoGenerate = false)
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val questionId: Int,
     val tags: List<String>,
     val owner: Owner,
     val isAnswered: Boolean,
@@ -15,7 +16,6 @@ data class Question(
     val score: Int,
     val lastActivityDate: Int,
     val creationDate: Int,
-    val questionId: Int,
     val link: String,
     val title: String
 )

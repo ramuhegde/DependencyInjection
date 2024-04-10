@@ -1,6 +1,7 @@
 package com.app.basics.daggerhilt.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,10 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 
     @Inject
     lateinit var dispatcher: CoroutineDispatcherProvider
@@ -41,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             val list = viewModel.getQuestions()
             withContext(dispatcher.mainDispatcher) {
                 // TODO: Bind it with recycler view
+                Log.v(TAG, "Questions size: ${list.size}")
                 questionsText.text = list.toString()
             }
         }

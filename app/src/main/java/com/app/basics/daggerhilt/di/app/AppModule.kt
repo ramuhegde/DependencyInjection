@@ -1,7 +1,9 @@
 package com.app.basics.daggerhilt.di.app
 
+import android.app.Application
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProviderImpl
+import com.app.basics.daggerhilt.util.NetworkUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,4 +18,8 @@ object AppModule {
     @Singleton
     fun provideCoroutineDispatcherProvider(): CoroutineDispatcherProvider =
         CoroutineDispatcherProviderImpl()
+
+    @Provides
+    @Singleton
+    fun provideNetworkUtil(application: Application) = NetworkUtil(application)
 }
