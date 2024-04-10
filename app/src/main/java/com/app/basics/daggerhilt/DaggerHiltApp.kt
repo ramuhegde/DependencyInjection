@@ -10,6 +10,8 @@ class DaggerHiltApp : Application() {
     // So that it can be accessed throughout the application lifecycle
     val coreComponent: CoreComponent by lazy {
         // DaggerCoreComponent is created/provided by Dagger annotation processing and code generation.
-        DaggerCoreComponent.builder().build()
+        DaggerCoreComponent.builder()
+            .application(this)
+            .build()
     }
 }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class QuestionsResponse(
     @SerializedName("items")
-    val questions: List<Question>,
+    val questions: List<QuestionApi>,
     @SerializedName("has_more")
     val hasMore: Boolean,
     @SerializedName("quota_max")

@@ -2,7 +2,7 @@ package com.app.basics.daggerhilt.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Owner(
+data class OwnerApi(
     val reputation: Int,
     @SerializedName("user_id")
     val userId: Int,
