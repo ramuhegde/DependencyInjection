@@ -2,7 +2,7 @@ package com.app.basics.daggerhilt.repo
 
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.network.QuestionsApi
-import com.app.basics.daggerhilt.network.model.Question
+import com.app.basics.daggerhilt.network.model.QuestionApi
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ class QuestionsRepoImpl @Inject constructor(
             questionsApi.getQuestions().questions
         } catch (e: Exception) {
             e.printStackTrace()
-            emptyList<Question>()
+            emptyList<QuestionApi>()
         }
 
     }

@@ -1,8 +1,8 @@
 package com.app.basics.daggerhilt.network.model
 
-data class Question(
+data class QuestionApi(
     val tags: List<String>,
-    val owner: Owner,
+    val owner: OwnerApi,
     val isAnswered: Boolean,
     val viewCount: Int,
     val answerCount: Int,
