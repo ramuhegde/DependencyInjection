@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Question(
-    @PrimaryKey(autoGenerate = false)
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val tags: List<String>,
     val owner: Owner,
     val isAnswered: Boolean,

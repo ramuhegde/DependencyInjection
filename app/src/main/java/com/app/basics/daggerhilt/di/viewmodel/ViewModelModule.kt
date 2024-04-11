@@ -14,5 +14,4 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(questionsViewModel: MainViewModel): ViewModel
-
 }
