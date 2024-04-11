@@ -1,12 +1,15 @@
 package com.app.basics.daggerhilt.di.app
 
 import android.app.Application
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import com.app.basics.daggerhilt.di.activity.ActivityComponent
 import com.app.basics.daggerhilt.di.activity.ActivityModule
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.network.QuestionsApi
 import com.app.basics.daggerhilt.storage.db.QuestionDao
 import com.app.basics.daggerhilt.storage.db.StackOverflowDb
+import com.app.basics.daggerhilt.storage.sharedpref.SharedPref
 import dagger.BindsInstance
 import dagger.Component
 import retrofit2.Retrofit
@@ -25,6 +28,8 @@ interface CoreComponent {
     fun provideQuestionsApi(): QuestionsApi
     fun provideStackOverflowDb(): StackOverflowDb
     fun provideQuestionDao(): QuestionDao
+    fun provideDataStorePref(): DataStore<Preferences>
+    fun provideSharedPref(): SharedPref
 
     // ActivityComponent is a SubComponent of CoreComponent.
     // SubComponent class needs to be provided by declaring them in their parent component class
