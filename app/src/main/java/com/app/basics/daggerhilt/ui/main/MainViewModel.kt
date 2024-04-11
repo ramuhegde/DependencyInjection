@@ -1,7 +1,6 @@
 package com.app.basics.daggerhilt.ui.main
 
 import androidx.lifecycle.ViewModel
-import com.app.basics.daggerhilt.network.model.QuestionApi
 import com.app.basics.daggerhilt.repo.QuestionsRepo
 import com.app.basics.daggerhilt.storage.db.Question
 import dagger.hilt.android.lifecycle.HiltViewModel

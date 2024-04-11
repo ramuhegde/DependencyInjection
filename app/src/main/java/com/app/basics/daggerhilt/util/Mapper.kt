@@ -44,7 +44,7 @@ fun OwnerApi.toOwner(): Owner {
 
 fun List<QuestionApi>.toQuestionsList(): List<Question> {
     return this.map {
-        it.toQuestion()
+        it.toQuestions()
     }
 }
 

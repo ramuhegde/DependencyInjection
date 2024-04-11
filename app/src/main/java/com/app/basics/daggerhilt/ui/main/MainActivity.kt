@@ -1,12 +1,9 @@
 package com.app.basics.daggerhilt.ui.main
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
+import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import android.view.LayoutInflater
-import androidx.lifecycle.ViewModelProvider
 import com.app.basics.daggerhilt.databinding.ActivityMainBinding
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,10 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     private val coroutineScope by lazy { CoroutineScope(dispatcher.mainDispatcher) }
 
-    private lateinit var questionsText: TextView
+    // private lateinit var viewModel: MainViewModel
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
 
     private val questionsAdapter = QuestionsAdapter()
 
@@ -41,8 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         // Alternate way to create viewmodel instance
         // viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-
-        questionsText = findViewById(R.id.questions_text_view)
     }
 
     override fun onStart() {
