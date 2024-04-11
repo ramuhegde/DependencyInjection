@@ -5,8 +5,9 @@ import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
-import com.app.basics.daggerhilt.R
+import com.app.basics.daggerhilt.databinding.ActivityMainBinding
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -28,10 +29,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var questionsText: TextView
     private val viewModel: MainViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
+
+    private val questionsAdapter = QuestionsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
         // Alternate way to create viewmodel instance
         // viewModel = ViewModelProvider(this)[MainViewModel::class.java]
@@ -42,12 +48,12 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
+        binding.questionsRecyclerView.adapter = questionsAdapter
+
         coroutineScope.launch(dispatcher.ioDispatcher) {
             val list = viewModel.getQuestions()
             withContext(dispatcher.mainDispatcher) {
-                // TODO: Bind it with recycler view
-                Log.v(TAG, "Questions size: ${list.size}")
-                questionsText.text = list.toString()
+                questionsAdapter.bindQuestions(list)
             }
         }
     }

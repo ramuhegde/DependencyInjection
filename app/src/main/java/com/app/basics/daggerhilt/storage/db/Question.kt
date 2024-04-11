@@ -7,15 +7,15 @@ import androidx.room.PrimaryKey
 data class Question(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val questionId: Int,
     val tags: List<String>,
     val owner: Owner,
     val isAnswered: Boolean,
     val viewCount: Int,
     val answerCount: Int,
     val score: Int,
-    val lastActivityDate: Int,
-    val creationDate: Int,
+    val lastActivityDate: Long,
+    val creationDate: Long,
+    val questionId: Int,
     val link: String,
     val title: String
 )
