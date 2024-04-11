@@ -13,8 +13,8 @@ data class Question(
     val viewCount: Int,
     val answerCount: Int,
     val score: Int,
-    val lastActivityDate: Int,
-    val creationDate: Int,
+    val lastActivityDate: Long,
+    val creationDate: Long,
     val questionId: Int,
     val link: String,
     val title: String

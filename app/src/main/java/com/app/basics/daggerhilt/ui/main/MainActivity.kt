@@ -1,9 +1,9 @@
 package com.app.basics.daggerhilt.ui.main
 
 import android.os.Bundle
-import android.widget.TextView
+import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
-import com.app.basics.daggerhilt.R
+import com.app.basics.daggerhilt.databinding.ActivityMainBinding
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.di.viewmodel.ViewModelFactory
 import com.app.basics.daggerhilt.ui.BaseActivity
@@ -22,27 +22,29 @@ class MainActivity : BaseActivity() {
 
     private val coroutineScope by lazy { CoroutineScope(dispatcher.mainDispatcher) }
 
-    private lateinit var questionsText: TextView
+    private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
+
+    private val questionsAdapter = QuestionsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-
-        questionsText = findViewById(R.id.questions_text_view)
     }
 
     override fun onStart() {
         super.onStart()
 
+        binding.questionsRecyclerView.adapter = questionsAdapter
+
         coroutineScope.launch(dispatcher.ioDispatcher) {
             val list = viewModel.getQuestions()
             withContext(dispatcher.mainDispatcher) {
-                // TODO: Bind it with recycler view
-                questionsText.text = list.toString()
+                questionsAdapter.bindQuestions(list)
             }
         }
     }
