@@ -20,15 +20,24 @@ class QuestionsRepoImpl @Inject constructor(
 
     companion object {
         private const val TAG = "QuestionsRepo"
+        private const val TIME_IN_24_HRS = 24 * 60 * 60 * 1000
     }
 
     override suspend fun getQuestions() = withContext(dispatcher.ioDispatcher) {
         return@withContext if (networkUtil.isConnectedToNetwork()) {
             try {
                 val questionsList = questionsApi.getQuestions().questions.toQuestionsList()
-                // Save the questions in Db.
-                launch {
-                    storageManager.saveQuestionsList(questionsList)
+                // Save the questions in Db only if the time gap is greater than or equal to 24hrs.
+                val lastApiCallTime = storageManager.getLastApiCallTime()
+                if (lastApiCallTime == 0L || System.currentTimeMillis() >= lastApiCallTime + TIME_IN_24_HRS) {
+                    launch {
+                        Log.v(TAG, "Last API call is greater than 24hr, save the data in DB")
+                        storageManager.saveQuestionsList(questionsList)
+                        // Save the API call time.
+                        storageManager.saveLastApiCallTime(System.currentTimeMillis())
+                    }
+                } else {
+                    Log.v(TAG, "Last API call is less than 24hr, skipping the caching")
                 }
                 Log.v(TAG, "Successfully fetched questions from API")
                 questionsList
