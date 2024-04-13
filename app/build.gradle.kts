@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("androidx.room")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin)
+    alias(libs.plugins.android.room)
+    alias(libs.plugins.jetbrains.kotlin.kapt)
 }
 
 android {
@@ -47,23 +47,24 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.android.core)
+    implementation(libs.android.appcompat)
+    implementation(libs.android.material)
+    implementation(libs.android.constraint.layout)
     // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.gson)
     // Dagger2
-    implementation("com.google.dagger:dagger:2.48")
-    kapt("com.google.dagger:dagger-compiler:2.48")
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
     // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.room)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
     // DataStore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.pref.datastore)
+
+    testImplementation(libs.test.junit)
+    androidTestImplementation(libs.andorid.test.junit)
+    androidTestImplementation(libs.android.test.espresso)
 }

@@ -1,0 +1,45 @@
+[versions]
+androidXCore = "1.12.0"
+androidXAppCompat = "1.6.1"
+androidMaterial = "1.11.0"
+androidXConstraintLayout = "2.1.4"
+squareupRetrofit = "2.9.0"
+dagger = "2.48"
+androidXRoom = "2.6.1"
+preferenceDataStore = "1.0.0"
+
+testJunit = "4.13.2"
+androidTestJunit = "1.1.5"
+androidTestEspresso = "3.5.1"
+
+androidAppPlugin = "8.2.1"
+kotlinPlugin = "1.9.22"
+roomPlugin = "2.6.1"
+
+[libraries]
+android-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidXCore" }
+android-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidXAppCompat" }
+android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
+android-constraint-layout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidXConstraintLayout" }
+
+squareup-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "squareupRetrofit" }
+squareup-retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "squareupRetrofit" }
+
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+
+room = { group = "androidx.room", name = "room-runtime", version.ref = "androidXRoom" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidXRoom" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidXRoom" }
+
+pref-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "preferenceDataStore" }
+
+test-junit = { group = "junit", name = "junit", version.ref = "testJunit" }
+andorid-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidTestJunit" }
+android-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidTestEspresso" }
+
+[plugins]
+android-application = {id = "com.android.application", version.ref = "androidAppPlugin" }
+jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinPlugin" }
+android-room = { id = "androidx.room", version.ref = "roomPlugin" }
+jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinPlugin" }
