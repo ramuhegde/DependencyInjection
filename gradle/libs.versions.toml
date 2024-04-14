@@ -1,4 +1,8 @@
 [versions]
+compileSdkVersion = "34"
+minSdk = "27"
+targetSdk = "34"
+
 coreKtx = "1.12.0"
 appCompat = "1.6.1"
 material = "1.11.0"
@@ -13,7 +17,7 @@ junit = "4.13.2"
 androidXJunit = "1.1.5"
 espresso = "3.5.1"
 
-androidGradlePlugin = "8.2.1"
+androidGradlePlugin = "8.2.2"
 kotlinPlugin = "1.9.22"
 
 [libraries]
@@ -44,5 +48,7 @@ android-test-espresso = { group = "androidx.test.espresso", name = "espresso-cor
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinPlugin" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-jetbrains-kotlin-kapt = {id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinPlugin"}
+jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinPlugin" }
 android-room = { id = "androidx.room", version.ref = "room" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinPlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }

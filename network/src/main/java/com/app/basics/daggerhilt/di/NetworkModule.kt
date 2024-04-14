@@ -1,4 +1,4 @@
-package com.app.basics.daggerhilt.di.app
+package com.app.basics.daggerhilt.di
 
 import com.app.basics.daggerhilt.network.QuestionsApi
 import dagger.Module

@@ -3,7 +3,6 @@ package com.app.basics.daggerhilt.repo
 import android.util.Log
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
 import com.app.basics.daggerhilt.network.QuestionsApi
-import com.app.basics.daggerhilt.network.model.QuestionApi
 import com.app.basics.daggerhilt.storage.StorageManager
 import com.app.basics.daggerhilt.util.NetworkUtil
 import com.app.basics.daggerhilt.util.toQuestionsList

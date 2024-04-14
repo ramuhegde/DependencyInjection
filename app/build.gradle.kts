@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.app.basics.daggerhilt"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
 
     defaultConfig {
         applicationId = "com.app.basics.daggerhilt"
-        minSdk = 27
-        targetSdk = 34
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -51,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":network"))
+
     implementation(libs.android.ktx)
     implementation(libs.android.appcompat)
     implementation(libs.material)
