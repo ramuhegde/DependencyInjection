@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Dagger & Hilt"
 include(":app")
 include(":network")
+include(":storage")

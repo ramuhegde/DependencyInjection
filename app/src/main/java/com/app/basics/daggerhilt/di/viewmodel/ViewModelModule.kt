@@ -5,6 +5,7 @@ import com.app.basics.daggerhilt.network.QuestionsApi
 import com.app.basics.daggerhilt.repo.QuestionsRepo
 import com.app.basics.daggerhilt.repo.QuestionsRepoImpl
 import com.app.basics.daggerhilt.storage.StorageManager
+import com.app.basics.daggerhilt.storage.StorageManagerImpl
 import com.app.basics.daggerhilt.util.NetworkUtil
 import dagger.Module
 import dagger.Provides

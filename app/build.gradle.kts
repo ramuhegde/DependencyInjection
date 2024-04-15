@@ -3,12 +3,11 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.jetbrains.kotlin.kapt)
-    alias(libs.plugins.android.room)
 }
 
 android {
     namespace = "com.app.basics.daggerhilt"
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.app.basics.daggerhilt"
@@ -37,9 +36,6 @@ android {
         jvmTarget = "1.8"
     }
 
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
     // Allow references to generated code
     kapt {
         correctErrorTypes = true
@@ -52,14 +48,12 @@ android {
 
 dependencies {
     implementation(project(":network"))
+    implementation(project(":storage"))
 
     implementation(libs.android.ktx)
     implementation(libs.android.appcompat)
     implementation(libs.material)
     implementation(libs.constraint.layout)
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
     // Dagger2
     // implementation("com.google.dagger:dagger:2.48")
     // kapt("com.google.dagger:dagger-compiler:2.48")
@@ -68,12 +62,6 @@ dependencies {
     kapt(libs.hilt.compiler)
     // For ViewModel and Lifecycles
     implementation (libs.activity.ktx)
-    // Room
-    implementation(libs.android.room)
-    kapt(libs.room.compiler)
-    implementation(libs.room.ktx)
-    // Preferences DataStore
-    implementation(libs.preference.datastore)
 
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.android.test.junit)

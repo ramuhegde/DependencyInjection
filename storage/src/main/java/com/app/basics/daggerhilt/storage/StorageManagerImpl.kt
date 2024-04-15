@@ -8,28 +8,29 @@ import com.app.basics.daggerhilt.storage.preference.PrefsDataStore
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class StorageManager @Inject constructor(
+class StorageManagerImpl @Inject constructor(
     private val dao: QuestionDao,
     private val prefsDataStore: PrefsDataStore,
     private val dispatcher: CoroutineDispatcherProvider
-) {
+): StorageManager {
 
     companion object {
         private const val TAG = "StorageManager"
     }
 
-    suspend fun getQuestionsList(): List<Question> = withContext(dispatcher.ioDispatcher) {
+    override suspend fun getQuestionsList(): List<Question> = withContext(dispatcher.ioDispatcher) {
         return@withContext dao.getQuestions()
     }
 
-    suspend fun saveQuestionsList(questions: List<Question>) =
+    override suspend fun saveQuestionsList(questions: List<Question>) =
         withContext(dispatcher.ioDispatcher) {
             Log.v(TAG, "Successfully saved questions list in Db")
             dao.insertQuestions(questions)
         }
 
 
-    suspend fun getLastApiCallTime() = prefsDataStore.getLastApiCallTime()
+    override suspend fun getLastApiCallTime() = prefsDataStore.getLastApiCallTime()
 
-    suspend fun saveLastApiCallTime(timeInMillis: Long) = prefsDataStore.saveLastApiCallTime(timeInMillis)
+    override suspend fun saveLastApiCallTime(timeInMillis: Long) =
+        prefsDataStore.saveLastApiCallTime(timeInMillis)
 }

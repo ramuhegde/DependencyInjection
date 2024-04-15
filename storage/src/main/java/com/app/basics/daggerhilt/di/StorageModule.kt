@@ -1,4 +1,4 @@
-package com.app.basics.daggerhilt.di.app
+package com.app.basics.daggerhilt.di
 
 import android.app.Application
 import android.content.Context
@@ -10,7 +10,9 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
+import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProviderImpl
 import com.app.basics.daggerhilt.storage.StorageManager
+import com.app.basics.daggerhilt.storage.StorageManagerImpl
 import com.app.basics.daggerhilt.storage.db.QuestionDao
 import com.app.basics.daggerhilt.storage.db.StackOverflowDb
 import com.app.basics.daggerhilt.storage.preference.PrefsDataStore
@@ -40,7 +42,8 @@ object StorageModule {
 
     @Provides
     @Singleton
-    fun provideQuestionDao(stackOverflowDb: StackOverflowDb) = stackOverflowDb.questionDao()
+    fun provideQuestionDao(stackOverflowDb: StackOverflowDb): QuestionDao =
+        stackOverflowDb.questionDao()
 
     @Provides
     @Singleton
@@ -72,6 +75,10 @@ object StorageModule {
         dao: QuestionDao,
         prefsDataStore: PrefsDataStore,
         dispatcher: CoroutineDispatcherProvider
-    ) =
-        StorageManager(dao, prefsDataStore, dispatcher)
+    ): StorageManager = StorageManagerImpl(dao, prefsDataStore, dispatcher)
+
+    @Provides
+    @Singleton
+    fun provideCoroutineDispatcherProvider(): CoroutineDispatcherProvider =
+        CoroutineDispatcherProviderImpl()
 }

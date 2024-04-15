@@ -1,5 +1,5 @@
 [versions]
-compileSdkVersion = "34"
+compileSdk = "34"
 minSdk = "27"
 targetSdk = "34"
 
@@ -12,6 +12,7 @@ hilt = "2.48"
 activityKtx = "1.8.2"
 room = "2.6.1"
 preferenceDatastore = "1.0.0"
+gson = "2.8.7"
 
 junit = "4.13.2"
 androidXJunit = "1.1.5"
@@ -39,6 +40,8 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 preference-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "preferenceDatastore" }
+
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 test-junit = { module = "junit:junit", name = "junit", version.ref = "junit" }
 android-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidXJunit" }

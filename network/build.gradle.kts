@@ -14,7 +14,7 @@ android {
     // Every module level build.gradle file should have a namespace
     namespace = "com.app.basics.daggerhilt.network"
 
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
