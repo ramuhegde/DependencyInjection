@@ -8,13 +8,16 @@ hilt = "2.48"
 activityKtx = "1.8.2"
 room = "2.6.1"
 preferenceDatastore = "1.0.0"
+composeBom = "2024.04.01"
+activityCompose = "1.9.3"
+composeViewModel = "2.8.7"
 
 junit = "4.13.2"
 androidXJunit = "1.1.5"
 espresso = "3.5.1"
 
-androidGradlePlugin = "8.2.1"
-kotlinPlugin = "1.9.22"
+androidGradlePlugin = "8.2.2"
+kotlinPlugin = "1.9.0"
 
 [libraries]
 android-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,6 +38,14 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 preference-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "preferenceDatastore" }
+
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3"}
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+compose-ui = { group = "androidx.compose.ui", name = "ui"}
+compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeViewModel" }
+compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-debug-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 
 test-junit = { module = "junit:junit", name = "junit", version.ref = "junit" }
 android-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidXJunit" }
