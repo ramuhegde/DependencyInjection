@@ -1,53 +1,55 @@
 package com.app.basics.daggerhilt.ui.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import com.app.basics.daggerhilt.databinding.ActivityMainBinding
-import com.app.basics.daggerhilt.di.coroutine.CoroutineDispatcherProvider
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import com.app.basics.daggerhilt.ui.NewsCard
+import com.app.basics.daggerhilt.ui.theme.QuestionAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
     }
 
-    @Inject
-    lateinit var dispatcher: CoroutineDispatcherProvider
-
-    private val coroutineScope by lazy { CoroutineScope(dispatcher.mainDispatcher) }
-
-    // private lateinit var viewModel: MainViewModel
     private val viewModel: MainViewModel by viewModels()
-    private lateinit var binding: ActivityMainBinding
-
-    private val questionsAdapter = QuestionsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
-
-        // Alternate way to create viewmodel instance
-        // viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        enableEdgeToEdge()
+        setContent {
+            QuestionAppTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    val paddingModifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                    BindNewsCards(modifier = paddingModifier)
+                }
+            }
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
+    @Composable
+    private fun BindNewsCards(modifier: Modifier) {
+        LaunchedEffect(Unit) {
+            viewModel.getQuestions()
+        }
 
-        binding.questionsRecyclerView.adapter = questionsAdapter
-
-        coroutineScope.launch(dispatcher.ioDispatcher) {
-            val list = viewModel.getQuestions()
-            withContext(dispatcher.mainDispatcher) {
-                questionsAdapter.bindQuestions(list)
+        LazyColumn(modifier = modifier) {
+            items(viewModel.questions) { item ->
+                NewsCard(title = item.title, description = item.owner.displayName)
             }
         }
     }
