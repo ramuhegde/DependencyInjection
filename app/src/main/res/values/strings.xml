@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Dagger &amp; Hilt</string>
     <string name="dd_mm_yyyy">dd/MM/yyyy</string>
+
+    <string name="questions">Questions</string>
+    <string name="owner_name">- %1$s</string>
 </resources>
